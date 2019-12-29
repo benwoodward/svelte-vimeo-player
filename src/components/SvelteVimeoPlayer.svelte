@@ -3,7 +3,6 @@
 
 <script>
   import { onMount, onDestroy, createEventDispatcher } from 'svelte';
-
   import Player from '@vimeo/player';
   import assign from 'object-assign';
 
@@ -15,13 +14,7 @@
   export let autoplay = false;
 
   const dispatch = createEventDispatcher();
-  let playerId = parseInt(Math.random() * 100000).toString();
-  let elementId = `vimeo-player-${videoId}`;
-  let player;
-
-  $: loadVideo(videoId)
-
-  const eventsToEmit = [
+  const eventsToDispatch = [
     'play',
     'pause',
     'ended',
@@ -35,11 +28,16 @@
     'error',
     'loaded'
   ]
+  let playerId = parseInt(Math.random() * 100000).toString();
+  let elementId = `vimeo-player-${videoId}`;
+  let player;
+
+  $: loadVideo(videoId)
 
   function loadVideo(id) {
-    if (player != undefined) {
-      return player.loadVideo(id)
-    }
+    if (!player) return
+
+    return player.loadVideo(id)
   }
 
   function play() {
@@ -60,23 +58,14 @@
 
   function setEvents() {
     player.ready()
-      .then(function () {
-        dispatch('ready', { player: player })
-      })
-      .catch((error) => {
-        dispatch('error', { error: error, player: player })
-      })
+      .then(() => dispatch('ready', { player: player }))
+      .catch(error => dispatch('error', { error: error, player: player }))
 
-    eventsToEmit.forEach(event => emitSvelteEvent.call(player, event))
+    eventsToDispatch.forEach(event => dispatchOnPlayerEvent(event))
   }
 
-  function emitSvelteEvent (event) {
-    player.on(event, (data) => {
-      dispatch(event, {
-        data: data,
-        player: player
-      })
-    })
+  function dispatchOnPlayerEvent (event) {
+    player.on(event, data => dispatch(event, { data: data, player: player }))
   }
 
   onMount(async () => {
