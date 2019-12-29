@@ -31,6 +31,7 @@
   let playerId = parseInt(Math.random() * 100000).toString();
   let elementId = `vimeo-player-${videoId}`;
   let player;
+  let volumeBeforeMute = 1;
 
   $: loadVideo(videoId)
 
@@ -40,19 +41,22 @@
     return player.loadVideo(id)
   }
 
-  function play() {
+  export function play() {
     return player.play()
   }
 
-  function pause() {
+  export function pause() {
     return player.pause()
   }
 
-  function mute() {
+  export function mute() {
+    player.getVolume()
+      .then(volume => volumeBeforeMute = volume)
+      .catch(error => volumeBeforeMute = 0.5)
     return player.setVolume(0)
   }
 
-  function unmute(volume = 0.5) {
+  export function unmute(volume = volumeBeforeMute) {
     return player.setVolume(volume)
   }
 
