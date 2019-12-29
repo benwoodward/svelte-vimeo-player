@@ -1,8 +1,27 @@
 {
+	"name": "svelte-vimeo-player",
+	"version": "0.1.0",
+	"description": "svelte-vimeo-player",
+	"main": "dist/index.min.js",
+	"module": "dist/index.min.mjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/benwoodward/svelte-vimeo-player.git"
+	},
+	"scripts": {
+		"build": "rollup -c",
+		"cy:open": "cypress open",
+		"cy:run": "cypress run",
+		"dev": "rollup -c -w",
+		"lint": "eslint --color --ignore-path .gitignore .",
+		"prepublishOnly": "npm run build",
+		"start": "sirv public",
+		"test": "start-server-and-test dev http://localhost:5000 cy:run"
+	},
+	"svelte": "src/components/components.module.js",
 	"browserslist": [
 		"defaults"
 	],
-	"description": "TODO",
 	"devDependencies": {
 		"@babel/core": "7.7.7",
 		"@babel/plugin-syntax-dynamic-import": "7.7.4",
@@ -44,7 +63,7 @@
 	"keywords": [
 		"svelte"
 	],
-	"license": "TODO",
+	"license": "MIT",
 	"lint-staged": {
 		"*.{html, css, scss, stylus, js, ts, json, yml, md}": [
 			"prettier --write",
@@ -55,19 +74,8 @@
 			"git add"
 		]
 	},
-	"main": "dist/index.min.js",
-	"module": "dist/index.min.mjs",
-	"name": "TODO",
-	"repository": "TODO",
-	"scripts": {
-		"build": "rollup -c",
-		"cy:open": "cypress open",
-		"cy:run": "cypress run",
-		"dev": "rollup -c -w",
-		"lint": "eslint --color --ignore-path .gitignore .",
-		"prepublishOnly": "npm run build",
-		"start": "sirv public",
-		"test": "start-server-and-test dev http://localhost:5000 cy:run"
-	},
-	"svelte": "src/components/components.module.js"
+	"dependencies": {
+		"@vimeo/player": "2.10.0",
+		"object-assign": "4.1.1"
+	}
 }
