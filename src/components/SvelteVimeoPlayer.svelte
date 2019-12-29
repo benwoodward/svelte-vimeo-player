@@ -51,13 +51,17 @@
 
   export function mute() {
     player.getVolume()
-      .then(volume => volumeBeforeMute = volume)
-      .catch(error => volumeBeforeMute = 0.5)
-    return player.setVolume(0)
+      .then(volume => volumeBeforeMute = volume * 100)
+      .catch(error => volumeBeforeMute = 50)
+    return setVolume(0)
   }
 
   export function unmute(volume = volumeBeforeMute) {
-    return player.setVolume(volume)
+    return setVolume(volume)
+  }
+
+  export function setVolume(volume) {
+    return player.setVolume(volume / 100.0)
   }
 
   function setEvents() {
