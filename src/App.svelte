@@ -1,9 +1,10 @@
 <script>
-  import { MyAwesomeComponent } from './components/components.module.js';
+  import { SvelteVimeoPlayer } from './components/components.module.js';
 </script>
 
 <style>
 
 </style>
 
-<MyAwesomeComponent name="world" />
+test
+<SvelteVimeoPlayer videoId="54348266" />

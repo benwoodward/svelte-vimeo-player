@@ -2,18 +2,20 @@
 </div>
 
 <script>
-  import Player from '@vimeo/player'
-  import assign from 'object-assign'
+  import { onMount, onDestroy } from 'svelte';
 
-  export let playerHeight = 320
-  export let playerWidth = 640
-  export let options = () => ({})
-  export let videoId = true
-  export let loop = false
-  export let autoplay = false
+  import Player from '@vimeo/player';
+  import assign from 'object-assign';
+
+  export let playerHeight = 320;
+  export let playerWidth = 640;
+  export let options = () => ({});
+  export let videoId;
+  export let loop = false;
+  export let autoplay = false;
 
   let playerId = parseInt(Math.random() * 100000).toString();
-  let elementId = `vimeo-player-${divId}`;
+  let elementId = `vimeo-player-${videoId}`;
   let player;
 
   $: loadVideo(videoId)
@@ -85,9 +87,9 @@
     this.player = new Player(this.elementId, assign(options, this.options))
 
     this.setEvents()
-  })
+  });
 
 	onDestroy(() => {
     this.player.unload()
-  }
+  });
 </script>
