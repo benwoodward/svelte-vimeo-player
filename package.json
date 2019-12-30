@@ -77,5 +77,10 @@
 	"dependencies": {
 		"@vimeo/player": "2.10.0",
 		"object-assign": "4.1.1"
-	}
+	},
+  "bugs": {
+    "url": "https://github.com/benwoodward/svelte-vimeo-player/issues"
+  },
+  "homepage": "https://github.com/benwoodward/svelte-vimeo-player#readme",
+  "author": "Ben Woodward"
 }
