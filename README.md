@@ -5,7 +5,7 @@ Just a thin svelte-wrapper around [Vimeo's player.js](https://github.com/vimeo/p
 
 ```
 <script>
-  import { SvelteVimeoPlayer } from 'svelte-vimeo-player';
+  import { VimeoPlayer } from 'svelte-vimeo-player';
 
   let player
 
@@ -21,7 +21,7 @@ Just a thin svelte-wrapper around [Vimeo's player.js](https://github.com/vimeo/p
   }
 </script>
 
-<SvelteVimeoPlayer
+<VimeoPlayer
   videoId="54348266"
   bind:player={player}
   on:error={logEvent}
