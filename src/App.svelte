@@ -1,5 +1,5 @@
 <script>
-  import { SvelteVimeoPlayer } from './components/components.module.js';
+  import { VimeoPlayer } from './components/components.module.js';
 
   let player
 
@@ -15,7 +15,7 @@
   }
 </script>
 
-<SvelteVimeoPlayer
+<VimeoPlayer
   videoId="54348266"
   bind:player={player}
   on:error={logEvent}

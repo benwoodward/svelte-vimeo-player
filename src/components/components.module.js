@@ -1,1 +1,1 @@
-export { default as SvelteVimeoPlayer } from './SvelteVimeoPlayer.svelte';
+export { default as VimeoPlayer } from './VimeoPlayer.svelte';
