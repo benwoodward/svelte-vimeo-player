@@ -74,7 +74,7 @@
     setEvents()
   });
 
-	onDestroy(() => {
+  onDestroy(() => {
     player.unload()
   });
 </script>
