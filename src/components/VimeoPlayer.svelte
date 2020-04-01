@@ -60,7 +60,7 @@
   }
 
   onMount(async () => {
-    const options = {
+    const overrides = {
       id: videoId,
       width: playerWidth,
       height: playerHeight,
@@ -68,7 +68,7 @@
       autoplay: autoplay
     }
 
-    vimeo = new Player(elementId, assign(options, options))
+    vimeo = new Player(elementId, assign(options, overrides))
     player = new Proxy(vimeo, handler)
 
     setEvents()
