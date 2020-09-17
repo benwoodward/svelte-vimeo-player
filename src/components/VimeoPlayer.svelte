@@ -75,7 +75,9 @@
   });
 
   onDestroy(() => {
-    player.unload()
+    if (player) {
+      player.unload();
+    }
   });
 </script>
 
