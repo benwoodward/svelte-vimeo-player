@@ -1,6 +1,6 @@
 {
 	"name": "svelte-vimeo-player",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "svelte-vimeo-player",
 	"main": "dist/index.min.js",
 	"module": "dist/index.min.mjs",
